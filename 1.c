@@ -16,7 +16,7 @@ int main() {
         i++;
       }
       if (num > 255) {
-        printf("ERROR VALUE TOO VEIGHT\n");
+        printf("ERROR VALUE\n");
         return 1;
       }
       nums += 1;
