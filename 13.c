@@ -2,10 +2,11 @@
 #include <string.h>
 char *scpy(char *to, char *from) 
 {
-  for (size_t i = 0; i <= strlen(from); i++) 
+  for (size_t i = 0; from[i] != '\n'; i++) 
   {
     to[i] = from[i];
   }
+  int len = strlen
   return to;
 }
 
