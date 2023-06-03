@@ -7,7 +7,6 @@ int slen(char *string) {
   }
   return len;
 }
-
 void move(char *str) {
   int size = slen(str);
   while (size >= 0) {
@@ -15,7 +14,6 @@ void move(char *str) {
     size -= 1;
   }
 }
-
 int convert(char *str1) {
   int counter = 0;
   for (int i = 0; str1[i] != '\0'; i++) {
