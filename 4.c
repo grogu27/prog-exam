@@ -10,7 +10,6 @@ int slen(const char *str) {
 }
 
 int replace(char *str, int start, int end, const char *new) {
-  int str_size = slen(str);
   int tmp_size = slen(&str[end + 1]);
   int new_size = slen(new);
 
