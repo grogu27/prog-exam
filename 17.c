@@ -7,7 +7,6 @@ int is_correct(char symbol, char *nabor) {
   }
   return 0;
 }
-
 int counter(char *str, char *nabor) {
   int count = 0;
   for (int i = 0; str[i] != '\0'; i++) {
