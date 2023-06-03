@@ -30,14 +30,13 @@ int main() {
       }
     }
     i += 1;
-
-    if (dots > 3 || nums > 4) {
-      printf("ERROR FORMAT");
+  }
+  if (dots > 3 || nums > 4) {
+      printf("ERROR FORMAT\n");
       return 1;
     }
-  }
   if (dots != 3 || nums != 4) {
-    printf("ERROR FORMAT");
+    printf("ERROR FORMAT\n");
     return 1;
   }
   return 0;
