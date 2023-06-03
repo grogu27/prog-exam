@@ -1,32 +1,37 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+int slen(const char *str) {
+  int i = 0;
+  while (str[i] != '\0') {
+    i++;
+  }
+  return i;
+}
+
+int replace(char *str, int start, int end, const char *new) {
+  int tmp_size = slen(&str[end + 1]);
+  int new_size = slen(new);
+
+  char *tmp = (char *)malloc(tmp_size);
+
+  for (int i = 0; i < tmp_size; i++) {
+    tmp[i] = str[end + 1 + i];
+  }
+  for (int i = 0; i < new_size; i++) {
+    str[start + i] = new[i];
+  }
+  for (int i = 0; i < tmp_size; i++) {
+    str[start + new_size + i] = tmp[i];
+  }
+  str[start + new_size + tmp_size] = '\0';
+
+  free(tmp);
+}
 
 int main() {
-  char what[] = "Warden";
-  char new[] = "Ganger";
   char str[50] = "Arc Warden";
-  char tmp[50];
-  int correct = 0;
-
-  for (int i = 0; str[i] != '\0'; i++) {
-    if (str[i] == what[correct]) {
-      correct += 1;
-    } else
-      correct = 0;
-
-    if (correct + 1 == sizeof(what)) {
-      for (int t = i + 1, id = 0; str[t] != '\0'; t++, id++) {
-        tmp[id] = str[t];
-      }
-      i -= sizeof(what) - 2;
-      for (int t = 0; new[t] != '\0'; t++, i++) {
-        str[i] = new[t];
-      }
-      for (int t = 0; tmp[t] != '\0'; t++, i++) {
-        str[i] = tmp[t];
-      }
-      break;
-    }
-  }
+  replace(str, 1, 4, "rc <TOP> w");
   printf("%s\n", str);
   return 0;
 }
