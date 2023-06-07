@@ -1,17 +1,27 @@
 #include <stdio.h>
 
-int counter(char *str) {
-  int count = 0;
-  while (*str != '\0') {
-    if ((*str - '0') % 2 == 0)
-      count++;
-    str++;
+int Sum(char *str) {
+  int sum = 0;
+  int num = 0;
+  for (int i = 0; str[i] != '\0'; i++) {
+    if (str[i] == ' '){
+      num = 0;
+      continue;
+    }
+    if (num != 0)
+      num *= 10;
+
+    num += str[i] - '0';
+    
+    if (num % 2 == 0)
+      sum += num;
+
   }
-  return count;
+  return sum;
 }
 
 int main() {
-  char str1[50] = "121212";
-  printf("%d\n", counter(str1));
+  char str1[] = "1 16 16";
+  printf("%d\n", Sum(str1));
   return 0;
 }

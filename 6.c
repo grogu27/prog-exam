@@ -17,7 +17,7 @@ int convert(char* str, int num){
 }
 
 int main(){
-    int num = 1337;
+    int num = 132567837; //738765231
     char str[50];
     convert(str, num);
     printf("%s\n", str);

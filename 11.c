@@ -13,7 +13,6 @@ int scmp(char *str1, char *str2) {
     if (to_lower(str1[i]) > to_lower(str2[i]))
       return 1;
   }
-
   return 0;
 }
 

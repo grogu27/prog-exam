@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int scmp(char *str1, char *str2) {
-  for (int i = 0; str1[i] != '\0'; i++) {
+  for (int i = 0; str1[i] != '\0' && str2[i] != '\0'; i++) {
     if (str1[i] < str2[i])
       return -1;
     if (str1[i] > str2[i])
@@ -12,8 +12,8 @@ int scmp(char *str1, char *str2) {
 }
 
 int main() {
-  char str1[50] = "Aar";
-  char str2[50] = "Warden";
+  char str1[50] = "Bar";
+  char str2[50] = "Aarden";
   printf("%d\n", scmp(str1, str2));
   return 0;
 }
