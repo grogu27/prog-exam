@@ -9,29 +9,44 @@ int slen(const char *str) {
   return i;
 }
 
-int replace(char *str, int start, int end, const char *new) {
-  int tmp_size = slen(&str[end + 1]);
-  int new_size = slen(new);
-
-  char *tmp = (char *)malloc(tmp_size);
-
-  for (int i = 0; i < tmp_size; i++) {
-    tmp[i] = str[end + 1 + i];
+int rem(char *str, const char *text) {
+  int len_str = slen(str);
+  int len_text = slen(text);
+  if (len_str < len_text)
+    return 1;
+  int count = 0;
+  for (int i = 0; i < len_str; i++) {
+    if (str[i] == text[count]) {
+      count += 1;
+    } else
+      count = 0;
+    if (count == len_text) {
+      for (int j = i + 1; j < len_str; j++) {
+        str[j - len_text] = str[j];
+      }
+      str[len_str - len_text] = '\0';
+      break;
+    }
   }
-  for (int i = 0; i < new_size; i++) {
-    str[start + i] = new[i];
-  }
-  for (int i = 0; i < tmp_size; i++) {
-    str[start + new_size + i] = tmp[i];
-  }
-  str[start + new_size + tmp_size] = '\0';
+  return 0;
+}
 
-  free(tmp);
+int add(char* str, char* text, int id){
+  int len_text = slen(text);
+  int len_str = slen(str);
+  for(int i = len_str; i >= id; i--){
+    str[i + len_text] = str[i];
+  }
+  for(int i = 0; i < len_text; i++){
+    str[id + i] = text[i];
+  }
+  return 0;
 }
 
 int main() {
-  char str[50] = "Arc Warden";
-  replace(str, 1, 4, "rc <TOP> w");
+  char str[50] = "some text imposter";
+  rem(str, "some text ");
+  add(str, "you're ", 0);
   printf("%s\n", str);
   return 0;
 }
